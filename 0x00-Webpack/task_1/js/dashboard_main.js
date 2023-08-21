@@ -3,6 +3,7 @@ const _ = require('lodash');
 
 let counter = 0;
 
+$("<div id='logo'> </div>").appendTo('body');
 $("<p>Holberton Dashboard</p>").appendTo('body');
 $("<p>Dashboard data for the students</p>").appendTo('body');
 $("<button>Click here to get started</button>").appendTo('body');
