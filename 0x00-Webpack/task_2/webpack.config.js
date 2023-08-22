@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'production',
     entry: {
-        main: path.resolve(__dirname, './src/js/dashboard_main.js'),
+        main: path.resolve(__dirname, './js/dashboard_main.js'),
     },
     output: {
         path: path.resolve(__dirname, 'public'),
