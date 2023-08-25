@@ -39,11 +39,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './dist/index.html',
+      template: './dist/index.html', // Correct path to index.html
     }),
   ],
   devServer: {
-    contentBase: './dist',
+    static: './dist',
     hot: true,
   },
 };
