@@ -1,7 +1,7 @@
 import React from "react";
 import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
-import { getLatestNotification } from "../utils/utils";
+import { getLatestNotification } from "../utils/utils.js";
 import NotificationItem from "./NotificationItem"; // Import the NotificationItem component
 
 function Notifications() {
@@ -18,7 +18,7 @@ function Notifications() {
       <ul>
         <NotificationItem type="default" value="New course available" />
         <NotificationItem type="urgent" value="New resume available" />
-        <NotificationItem type="urgent" html={{ __html: getLatestNotification() }} />
+        <NotificationItem type="urgent" value="requirement - complete by EOD" />
       </ul>
     </div>
   );
