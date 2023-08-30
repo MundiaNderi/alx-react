@@ -1,0 +1,22 @@
+#CourseList {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+  }
+  
+  #CourseList th,
+  #CourseList td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  
+  #CourseList th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .CourseListRowHeader {
+    background-color: #d8d8d8;
+  }
+  
