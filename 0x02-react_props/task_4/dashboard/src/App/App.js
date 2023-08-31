@@ -7,7 +7,7 @@ import Notifications from './Notifications/Notifications';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
-function App({ isLoggedIn }) {
+function App({ isLoggedIn }) ii{
   return (
     <div className="App">
       <Notifications />
