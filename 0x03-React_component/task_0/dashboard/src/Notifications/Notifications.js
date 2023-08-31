@@ -8,7 +8,6 @@ function Notifications({ displayDrawer, listNotifications }) {
   return (
     <div className="Notifications">
       <div className={`menuItem${displayDrawer ? " display-menu" : ""}`}>
-        Your notifications
       </div>
       <button
         style={{
