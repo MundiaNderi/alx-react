@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Notifications.css";
-import closeIcon from "../assets/close-icon.png";
+import closeIcon from "./assets/close-icon.png";
 import NotificationItem from "./NotificationItem"; // Import the NotificationItem component
 
 function Notifications({ displayDrawer, listNotifications }) {
