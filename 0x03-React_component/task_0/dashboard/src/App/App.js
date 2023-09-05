@@ -6,7 +6,6 @@ import CourseList from "../CourseList/CourseList";
 import Notifications from "../Notifications/Notifications";
 import "./App.css";
 import PropTypes from "prop-types";
-import { getLatestNotification } from "../utils/utils";
 
 class App extends React.Component {
   listCourses = [
