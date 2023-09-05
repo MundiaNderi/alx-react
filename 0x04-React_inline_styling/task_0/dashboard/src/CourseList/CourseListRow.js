@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CourseListRow = ({ isHeader textFirstCell, textSecondCell }) => {
+const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
     // Define styles for header and regular rows
     const headerStyle = {
         backgroundColor: '#deb5b545',
