@@ -50,7 +50,7 @@ describe('Notifications component', () => {
       },
       {
         id: 2,
-        type: 'warning',x
+        type: 'warning',
         value: 'Notification 2'
       },
     ];

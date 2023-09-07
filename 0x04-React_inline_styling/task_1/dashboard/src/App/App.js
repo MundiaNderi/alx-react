@@ -7,7 +7,6 @@ import Notifications from '../Notifications/Notifications';
 import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import PropTypes from 'prop-types';
-import { getLatestNotification } from '../utils/utils';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
