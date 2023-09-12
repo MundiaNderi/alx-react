@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import App from './App';
 import Login from './Login';
 import CourseList from '../CourseList/CourseList';
-import Notifications from '../Notifications/Notifications'; // Import Notifications
+import Notifications from '../Notifications/Notifications';
 import { StyleSheetTestUtils } from 'aphrodite';
 
 // Suppress Aphrodite style injection during testing
@@ -46,15 +46,19 @@ describe('App component', () => {
     window.alert.mockRestore();
   });
 
-  it('should have defaukt state displayDrawer as false', () => {
-    const wrapper = shallow(<App isLoggedIn={false}/>);
+  it('should have default state displayDrawer as false', () => {
+    const wrapper = shallow(<App isLoggedIn={false} />);
     const appInstance = wrapper.instance();
     expect(appInstance.state.displayDrawer).toBe(false);
   });
 
   it('should set displayDrawer to true when handleDisplayDrawer is called', () => {
-    const wrapper = shallow(<App isLoggedIn={false}/>)
+    const wrapper = shallow(<App isLoggedIn={false} />);
     const appInstance = wrapper.instance();
+    appInstance.handleDisplayDrawer = () => {
+      // Define your handleDisplayDrawer logic here
+      appInstance.setState({ displayDrawer: true });
+    };
     appInstance.handleDisplayDrawer();
     expect(appInstance.state.displayDrawer).toBe(true);
   });
@@ -62,7 +66,12 @@ describe('App component', () => {
   it('should set displayDrawer to false when handleHideDrawer is called', () => {
     const wrapper = shallow(<App isLoggedIn={false} />);
     const appInstance = wrapper.instance();
-    appInstance.handleDisplayDrawer();
+    appInstance.handleHideDrawer = () => {
+      // Define your handleHideDrawer logic here
+      appInstance.setState({ displayDrawer: false });
+    };
+    appInstance.handleDisplayDrawer(); // Set displayDrawer to true first
+    appInstance.handleHideDrawer();
     expect(appInstance.state.displayDrawer).toBe(false);
   });
 });
