@@ -52,7 +52,7 @@ class App extends React.Component {
         { id: 3, type: 'urgent', value: 'requirement - complete by EOD'},
     ];
 
-    componentdDidMount() {
+    componentDidMount() {
         document.addEventListener('keydown', this.handleKeyDown);
     }
 
