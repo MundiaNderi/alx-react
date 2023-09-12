@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import CourseListRow from "./CourseListRow";
 import CourseList from "./CourseList";
+import { render } from '@testing-library/react';
 
 describe('CourseList Component', () => {
   it('renders CourseList component without crashing', () => {

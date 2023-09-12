@@ -5,7 +5,7 @@ import NotificationItem from './NotificationItem';
 describe('NotificationItem component', () => {
     it('calls markAsRead with the correct ID when clicked', () => {
         // Mock the markAsRead function using a spy
-        const markAsRead = jest.fn();
+        const markAsReadSpy = jest.fn();
 
         const notification = {
             id: 1,

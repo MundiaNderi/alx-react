@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'testing-library/react';
+import { render } from '@testing-library/react';
 import BodySectionWithMarginBottom from './BodySectionWithMarginBottom';
 
 test('renders BodySectionWithMarginBottom component with correct props and CSS applied', () => {
@@ -15,5 +15,5 @@ test('renders BodySectionWithMarginBottom component with correct props and CSS a
 
     expect(titleElement).toBeInTheDocument();
     expect(childrenElement).toBeInTheDocument();
-    expect(wrapperElement).toHaveStyle('margin-botton: 40px')
+    expect(wrapperElement).toHaveStyle('margin-bottom: 40px')
 });
