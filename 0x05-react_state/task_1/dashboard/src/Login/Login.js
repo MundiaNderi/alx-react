@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     '@media (max-width: 900px)': {
         input: {
             width: '100%'
-        },x
+        },
     },
 });
 
