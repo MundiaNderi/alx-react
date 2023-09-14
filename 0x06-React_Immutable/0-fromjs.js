@@ -2,7 +2,7 @@
 const Immutable = require('immutable');
 
 // Define the getImmutableFunction
-function getImmutableFunction(object) {
+function getImmutableObject(object) {
     // Convert the input object to an immutable Map
     const immutableMap = Immutable.fromJS(object);
     return immutableMap;
@@ -15,5 +15,5 @@ const inputObject = {
     thing: -914767132,
 };
 
-const immutableResult = getImmutableFunction(inputObject);
+const immutableResult = getImmutableObject(inputObject);
 console.log(immutableResult);
