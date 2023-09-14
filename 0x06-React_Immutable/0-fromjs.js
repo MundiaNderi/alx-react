@@ -1,19 +1,5 @@
-// Import the Immutable.js library
-const Immutable = require('immutable');
+import { fromJS } from './node_modules/immutable/dist/immutable';
 
-// Define the getImmutableFunction
-function getImmutableObject(object) {
-    // Convert the input object to an immutable Map
-    const immutableMap = Immutable.fromJS(object);
-    return immutableMap;
+export default function getImmutableObject(object) {
+    return fromJS(object);
 }
-
-const inputObject = {
-    fear: true,
-    smell: -1033575916.9145899,
-    wall: false,
-    thing: -914767132,
-};
-
-const immutableResult = getImmutableObject(inputObject);
-console.log(immutableResult);
