@@ -8,13 +8,5 @@ function getImmutableFuction(object) {
     return immutableMap;
 }
 
-// Example usage
-const inputObject = {
-    fear: true,
-    smell: -1033575916.9145899,
-    wall: false,
-    thing: -914767132,
-};
-
 const immutableResult = getImmutableFuction(inputObject);
 console.log(immutableResult);
