@@ -1,12 +1,12 @@
 // Import the Immutable.js library
-const Immutable = require('Immutable');
+const Immutable = require('immutable');
 
-// Define the getImmutableFuction
-function getImmutableFuction(object) {
+// Define the getImmutableFunction
+function getImmutableFunction(object) {
     // Convert the input object to an immutable Map
     const immutableMap = Immutable.fromJS(object);
     return immutableMap;
 }
 
-const immutableResult = getImmutableFuction(inputObject);
+const immutableResult = getImmutableFunction(inputObject);
 console.log(immutableResult);
