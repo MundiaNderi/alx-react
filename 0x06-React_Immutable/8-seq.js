@@ -5,9 +5,9 @@ const printBestStudents = (object) => {
 
     const getStudent = seq.filter((value) => value.score > 70);
 
-    const student = getStudent.toJs();
+    const student = getStudent.toJS();
 
-    const formatName = (name) => name.chartAt(0).toUpperCase() + name.slice(1);
+    const formatName = (name) => name.charAt(0).toUpperCase() + name.slice(1);
 
     Object.keys(student).map((key) => {
         student[key].firstName = formatName(student[key].firstName);
