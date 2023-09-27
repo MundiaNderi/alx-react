@@ -1,5 +1,5 @@
 import { index } from "cheerio/lib/api/traversing";
-import { FETCH_COURSE_SUCCESS, SELECT_COURSE, UNSELECT_COURSE } from "../src/courseActionTypes";
+import { FETCH_COURSE_SUCCESS, SELECT_COURSE, UNSELECT_COURSE } from "../courseActionTypes";
 
 const initialState = [];
 

@@ -5,7 +5,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
     LOGOUT
-} from './uiActionTypes';
+} from '../uiActionTypes';
 import { describe } from "node:test";
 import { execPath } from "node:process";
 
