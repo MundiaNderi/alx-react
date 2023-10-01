@@ -18,6 +18,11 @@ const mapStateToProps = (state) => ({
     displayDrawer: state.isNotificationDrawerVisible,
 })
 
+const mapDispatchToProps = {
+  displayNotificationDrawer,
+  hideNotificationDrawer
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -57,11 +62,13 @@ class App extends React.Component {
   }
 
   handleDisplayDrawer() {
-    this.setState({ displayDrawer: true });
+    // Dispatch the action to display the notification drawer
+    this.props.displayNotificationDrawer();
   }
 
   handleHideDrawer() {
-    this.setState({ displayDrawer: false });
+    // Dispatch the action to hide the notfication drawer
+    this.props.hideNotificationDrawer();
   }
 
   // Log in function
@@ -164,4 +171,4 @@ App.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
