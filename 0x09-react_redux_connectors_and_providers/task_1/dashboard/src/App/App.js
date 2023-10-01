@@ -11,11 +11,9 @@ import { StyleSheet, css } from "aphrodite";
 import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
 import { AppContext } from "./AppContext"; // Import the App context
-import { displayNotificationDrawer, hideNotificationDrawer} from '../actions/uiActionCreators';
 
 const mapStateToProps = (state) => ({
     isLoggedIn: state.uiReducer.isLoggedIn,
-    displayDrawer: state.isNotificationDrawerVisible,
 })
 
 class App extends React.Component {
@@ -110,7 +108,7 @@ class App extends React.Component {
           <div className="heading-section">
             <Notifications
               listNotifications={this.state.listNotifications} // Pass listNotifications to Notifications component
-              displayDrawer={this.props.displayDrawer}
+              displayDrawer={this.state.displayDrawer}
               handleDisplayDrawer={this.handleDisplayDrawer}
               handleHideDrawer={this.handleHideDrawer}
               markNotificationAsRead={this.markNotificationAsRead} // Pass the markNotificationAsRead function to Notifications component
