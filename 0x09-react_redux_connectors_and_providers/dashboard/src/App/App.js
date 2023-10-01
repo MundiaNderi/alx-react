@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from  "react-redux";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
@@ -11,6 +12,10 @@ import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
 import { AppContext } from "./AppContext"; // Import the App context
 
+const mapStateToProps = (state) => ({
+    isLoggedIn: state.uiReducer.isLoggedIn,
+})
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +27,7 @@ class App extends React.Component {
             password: "",
             isLoggedIn: false,
         },
-        listNotifications = [
+        listNotifications: [
             { id: 1, type: "default", value: "New course available" },
             { id: 2, type: "urgent", value: "New resume available" },
             { id: 3, type: "urgent", html: getLatestNotification() },
@@ -157,4 +162,4 @@ App.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
 
-export default App;
+export default connect(mapStateToProps)(App);
