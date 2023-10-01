@@ -24,33 +24,20 @@ const mapDispatchToProps = {
 }
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { 
-        displayDrawer: false,
-        user: {
-            email: "",
-            password: "",
-            isLoggedIn: false,
-        },
-        listNotifications: [
-            { id: 1, type: "default", value: "New course available" },
-            { id: 2, type: "urgent", value: "New resume available" },
-            { id: 3, type: "urgent", html: getLatestNotification() },
-          ]
-    };
-    
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
-  }
-
   listCourses = [
     { id: 1, name: "ES6", credit: 60 },
     { id: 2, name: "Webpack", credit: 20 },
     { id: 3, name: "React", credit: 40 },
   ];
+
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress);
+  }
 
 
   handleKeyPress(e) {
@@ -61,15 +48,6 @@ class App extends React.Component {
     }
   }
 
-  handleDisplayDrawer() {
-    // Dispatch the action to display the notification drawer
-    this.props.displayNotificationDrawer();
-  }
-
-  handleHideDrawer() {
-    // Dispatch the action to hide the notfication drawer
-    this.props.hideNotificationDrawer();
-  }
 
   // Log in function
   logIn = (email, password) => {
@@ -102,13 +80,6 @@ class App extends React.Component {
     }));
   }
 
-  componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyPress);
-  }
 
   render() {
     return (
