@@ -11,39 +11,33 @@ import { StyleSheet, css } from "aphrodite";
 import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
 import { AppContext } from "./AppContext"; // Import the App context
+import { displayNotificationDrawer, hideNotificationDrawer} from '../actions/uiActionCreators';
 
 const mapStateToProps = (state) => ({
     isLoggedIn: state.uiReducer.isLoggedIn,
+    displayDrawer: state.isNotificationDrawerVisible,
 })
 
+const mapDispatchToProps = {
+  displayNotificationDrawer,
+  hideNotificationDrawer
+}
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { 
-        displayDrawer: false,
-        user: {
-            email: "",
-            password: "",
-            isLoggedIn: false,
-        },
-        listNotifications: [
-            { id: 1, type: "default", value: "New course available" },
-            { id: 2, type: "urgent", value: "New resume available" },
-            { id: 3, type: "urgent", html: getLatestNotification() },
-          ]
-    };
-    
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
-  }
-
   listCourses = [
     { id: 1, name: "ES6", credit: 60 },
     { id: 2, name: "Webpack", credit: 20 },
     { id: 3, name: "React", credit: 40 },
   ];
+
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress);
+  }
 
 
   handleKeyPress(e) {
@@ -54,13 +48,6 @@ class App extends React.Component {
     }
   }
 
-  handleDisplayDrawer() {
-    this.setState({ displayDrawer: true });
-  }
-
-  handleHideDrawer() {
-    this.setState({ displayDrawer: false });
-  }
 
   // Log in function
   logIn = (email, password) => {
@@ -93,13 +80,6 @@ class App extends React.Component {
     }));
   }
 
-  componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyPress);
-  }
 
   render() {
     return (
@@ -108,7 +88,7 @@ class App extends React.Component {
           <div className="heading-section">
             <Notifications
               listNotifications={this.state.listNotifications} // Pass listNotifications to Notifications component
-              displayDrawer={this.state.displayDrawer}
+              displayDrawer={this.props.displayDrawer}
               handleDisplayDrawer={this.handleDisplayDrawer}
               handleHideDrawer={this.handleHideDrawer}
               markNotificationAsRead={this.markNotificationAsRead} // Pass the markNotificationAsRead function to Notifications component
@@ -162,4 +142,4 @@ App.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

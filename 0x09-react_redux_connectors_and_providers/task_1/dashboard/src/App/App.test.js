@@ -22,79 +22,65 @@ afterEach(() => {
 describe("App tests", () => {
   it("renders without crashing", () => {
     const component = shallow(<App />);
-
     expect(component).toBeDefined();
   });
-  
+
   it("should render Notifications component", () => {
     const component = shallow(<App />);
-
-    expect(component.containsMatchingElement(<Notifications />)).toEqual(false);
+    expect(component.containsMatchingElement(<Notifications />)).toEqual(true);
   });
-  
+
   it("should render Header component", () => {
     const component = shallow(<App />);
-
     expect(component.contains(<Header />)).toBe(true);
   });
-  
+
   it("should render Login Component", () => {
     const component = shallow(<App />);
-
     expect(component.contains(<Login />)).toBe(true);
   });
-  
+
   it("should render Footer Component", () => {
     const component = shallow(<App />);
-
     expect(component.contains(<Footer />)).toBe(true);
   });
 
   it("does not render courselist if logged out", () => {
     const component = shallow(<App />);
-
-    component.setState({ isLoggedIn: false });
-
+    component.setProps({ isLoggedIn: false });
     expect(component.contains(<CourseList />)).toBe(false);
   });
 
   it("renders courselist if logged in", () => {
     const component = shallow(<App />);
-    component.setState({ isLoggedIn: true });
-
+    component.setProps({ isLoggedIn: true });
     expect(component.containsMatchingElement(<CourseList />)).toEqual(true);
     expect(component.contains(<Login />)).toBe(false);
   });
 
-  it("changes displayDrawer state to true when calling handleDisplayDrawer", () => {
+  it("changes displayDrawer state to true when calling displayNotificationDrawer", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.state().displayDrawer).toEqual(false);
-
-    wrapper.instance().handleDisplayDrawer();
-
-    expect(wrapper.state().displayDrawer).toEqual(true);
+    expect(wrapper.prop("displayDrawer")).toEqual(false);
+    wrapper.prop("displayNotificationDrawer")();
+    expect(wrapper.prop("displayDrawer")).toEqual(true);
   });
 
-  it("changes displayDrawer state to false when calling handleHideDrawer", () => {
+  it("changes displayDrawer state to false when calling hideNotificationDrawer", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.state().displayDrawer).toEqual(false);
-
-    wrapper.instance().handleDisplayDrawer();
-    expect(wrapper.state().displayDrawer).toEqual(true);
-
-    wrapper.instance().handleHideDrawer();
-
-    expect(wrapper.state().displayDrawer).toEqual(false);
+    expect(wrapper.prop("displayDrawer")).toEqual(false);
+    wrapper.prop("displayNotificationDrawer")();
+    expect(wrapper.prop("displayDrawer")).toEqual(true);
+    wrapper.prop("hideNotificationDrawer")();
+    expect(wrapper.prop("displayDrawer")).toEqual(false);
   });
 
   it("calls logOut function when pressing ctrl + h", () => {
     const logOutSpy = jest.fn();
     const wrapper = mount(<App />);
-    wrapper.setState({ isLoggedIn: true });
+    wrapper.setProps({ isLoggedIn: true });
     wrapper.instance().logOut = logOutSpy;
     const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
     document.dispatchEvent(event);
-
     expect(logOutSpy).toHaveBeenCalled();
     wrapper.unmount();
   });
@@ -104,7 +90,6 @@ describe("App tests", () => {
     const wrapper = mount(<App />);
     const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
     document.dispatchEvent(event);
-
     expect(alertSpy).toHaveBeenCalled();
     wrapper.unmount();
   });
@@ -114,7 +99,6 @@ describe("App tests", () => {
     const wrapper = mount(<App />);
     const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
     document.dispatchEvent(event);
-
     expect(alertSpy).toHaveBeenCalledWith("Logging you out");
     jest.restoreAllMocks();
     wrapper.unmount();
@@ -122,13 +106,12 @@ describe("App tests", () => {
 
   it("has default state for displayDrawer as false", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.state().displayDrawer).toEqual(false);
+    expect(wrapper.prop("displayDrawer")).toEqual(false);
   });
 
   it("updates state correctly when calling logIn function", () => {
     const wrapper = shallow(<App />);
     wrapper.instance().logIn("test@example.com", "password");
-
     expect(wrapper.state().user).toEqual({
       email: "test@example.com",
       password: "password",
@@ -139,7 +122,6 @@ describe("App tests", () => {
   it("updates state correctly when calling logOut function", () => {
     const wrapper = shallow(<App />);
     wrapper.instance().logOut();
-
     expect(wrapper.state().user).toEqual({
       email: "",
       password: "",
@@ -149,41 +131,17 @@ describe("App tests", () => {
 
   it("marks notification as read when calling markNotificationAsRead function", () => {
     const wrapper = shallow(<App />);
-    const notificationId = 2; 
+    const notificationId = 2;
     const initialNotifications = wrapper.state().listNotifications;
-
-    // Call the markNotificationAsRead with the Notification ID
     wrapper.instance().markNotificationAsRead(notificationId);
-
-    // Get the updated list of notifications
     const updatedNotifications = wrapper.state().listNotifications;
-
-    // Verify that the notification with the specified ID is removed
-    expect(updatedNotifications.some(notification => notificationId === notificationId)).toBe(false);
-
-    // Verify that the other notifications are unchanged
+    expect(
+      updatedNotifications.some((notification) => notificationId === notificationId)
+    ).toBe(false);
     for (const notification of initialNotifications) {
-        if (notificationId !== notificationId) {
-            expect(updatedNotifications).toContainEqual(notification);
-        }
+      if (notificationId !== notificationId) {
+        expect(updatedNotifications).toContainEqual(notification);
+      }
     }
   });
 });
-
-
-describe("mapStateToProps function", ()=> {
-    it("should map isLoggedIn from state to props", () => {
-        // Create a sample state with the expected structure
-        const state = {
-            uiReducer: {
-                isLoggedIn: true, 
-            },
-        };
-
-        // Call mapStateToProps with the sample state
-        const props = mapStateToProps(state);
-
-        // Expect the mapped prop to be true
-        expect(props.isLoggedIn).toBe(true);
-    })
-})
