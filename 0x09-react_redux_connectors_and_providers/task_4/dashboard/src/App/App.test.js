@@ -5,10 +5,28 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Notifications from "../Notifications/Notifications";
 import CourseList from "../CourseList/CourseList";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store"; // Import redux-mock-store
+
+// Create a mock store
+const mockStore = configureStore([]);
 
 describe("App tests", () => {
   it("renders without crashing", () => {
-    const component = shallow(<App />);
+    const store = mockStore({
+      ui: {
+        isNotificationDrawerVisible: false,
+        isUserLoggedIn:false,
+        user: {},
+      },
+    });
+
+    const component = shallow(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+
     expect(component).toBeDefined();
   });
 
