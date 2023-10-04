@@ -9,7 +9,6 @@ import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBot
 import BodySection from "../BodySection/BodySection";
 import { StyleSheet, css } from "aphrodite";
 import PropTypes from "prop-types";
-import { getLatestNotification } from "../utils/utils";
 import { AppContext } from "./AppContext"; // Import the App context
 import { displayNotificationDrawer, hideNotificationDrawer} from '../actions/uiActionCreators';
 

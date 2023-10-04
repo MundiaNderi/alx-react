@@ -1,5 +1,9 @@
 import * as types from './uiActionTypes';
 
+export function displayNotificationDrawer() {
+    return { type: types.DISPLAY_NOTIFICATION_DRAWER };
+};
+
 export function loginSuccess() {
     return { type: types.LOGIN_SUCCESS };
 }

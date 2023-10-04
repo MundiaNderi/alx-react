@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { logout } from '../actions/uiActionCreators';
-import logo from '../assets/holberton-logo-jpg';
+import logo from '../assets/';
 import { StyleSheet, css } from "aphrodite";
 
 
