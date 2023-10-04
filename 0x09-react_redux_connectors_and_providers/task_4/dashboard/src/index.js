@@ -6,11 +6,13 @@ import App from './App/App';
 import uiReducer from './reducers/uiReducer'; // Import your uiReducer;
 import thunk from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension'; // Import composeWithDevTools
+import rootReducer from './reducers/rootReducer'; // Import the rootReducer
+
 
 
 // Create the Redux store with your uiReducer and apply the thunk middleware
 const store = createStore(
-    uiReducer,
+    rootReducer, // Use the rootReducer
     composeWithDevTools(applyMiddleware(thunk))
 );
 
