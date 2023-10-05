@@ -55,13 +55,6 @@ class App extends React.Component {
       <React.Fragment>
         <div className={css(styles.App)}>
           <div className="heading-section">
-            <Notifications
-              listNotifications={this.state.listNotifications} // Pass listNotifications to Notifications component
-              displayDrawer={this.props.displayDrawer}
-              handleDisplayDrawer={this.handleDisplayDrawer}
-              handleHideDrawer={this.handleHideDrawer}
-              markNotificationAsRead={this.markNotificationAsRead} // Pass the markNotificationAsRead function to Notifications component
-            />
             <Header />
           </div>
           <AppContext.Provider
